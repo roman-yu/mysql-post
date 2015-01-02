@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script>
+    $(document).ready(function() {
+        $("form").submit(function() {
+
+        });
+    });
+    </script>
+</head>
+
+<body>
+
+    <form action="http://127.0.0.1:1337/" method="post">
+    	Email:
+        <input type="text" name="user[email]" value="Mickey@Disney.com">
+        <br>Username:
+        <input type="text" name="user[username]" value="Mickey">
+        <br>First name:
+        <input type="text" name="user[firstname]" value="Mickey">
+        <br> Last name:
+        <input type="text" name="user[lastname]" value="Mouse">
+        <br>
+        <input type="submit" value="Submit">
+    </form>
+
+    <hr>
+
+    <form action="http://127.0.0.1:1337/" method="post" enctype='application/json'>
+        <input name='pet[species]' value='Dahut'>
+        <input name='pet[name]' value='Hypatia'>
+        <input name='kids[1]' value='Thelma'>
+        <input name='kids[0]' value='Ashley'>
+
+        <input type="submit" value="Submit">
+    </form>
+
+</body>
+
+</html>

@@ -1,0 +1,10 @@
+GRANT ALL PRIVILEGES ON *.* TO 'monty'@'localhost' WITH GRANT OPTION;
+GRANT ALL PRIVILEGES ON test.* TO 'tester'@'localhost' WITH GRANT OPTION;
+
+CREATE TABLE Account (id INT NOT NULL AUTO_INCREMENT, email VARCHAR(255) NOT NULL, username varchar(20) NOT NULL, firstname VARCHAR(35), lastname VARCHAR(35), PRIMARY KEY (id));
+
+INSERT INTO Account (email, username, firstname, lastname) VALUES('james@test.com','James', 'junsi', 'luo');
+
+INSERT INTO animals (name) VALUES
+    ('dog'),('cat'),('penguin'),
+    ('lax'),('whale'),('ostrich');
