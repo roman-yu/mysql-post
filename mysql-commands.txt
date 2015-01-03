@@ -1,9 +1,38 @@
 GRANT ALL PRIVILEGES ON *.* TO 'monty'@'localhost' WITH GRANT OPTION;
 GRANT ALL PRIVILEGES ON test.* TO 'tester'@'localhost' WITH GRANT OPTION;
 
-CREATE TABLE Account (id INT NOT NULL AUTO_INCREMENT, email VARCHAR(255) NOT NULL, username varchar(20) NOT NULL, firstname VARCHAR(35), lastname VARCHAR(35), PRIMARY KEY (id));
+CREATE TABLE Gender_Ref 
+(   gender CHAR(1) NOT NULL,
+    PRIMARY KEY (gender)
+) ENGINE = InnoDB ;
 
-INSERT INTO Account (email, username, firstname, lastname) VALUES('james@test.com','James', 'junsi', 'luo');
+INSERT INTO Gender_Ref (gender)
+    VALUES
+        ('F'), ('M')  ;
+
+CREATE TABLE members 
+(   id int(11) NOT NULL auto_increment,
+     ... 
+     ...
+    gender CHAR(1) NOT NULL,
+    PRIMARY KEY (id),
+    FOREIGN KEY gender
+        REFERENCES Gender_Ref (gender)
+) ENGINE = InnoDB ;
+
+CREATE TABLE Account (
+  id INT UNSIGNED NOT NULL AUTO_INCREMENT ,
+  email VARCHAR(255) NOT NULL ,
+  password VARCHAR(45) NOT NULL ,
+  username VARCHAR(45) NULL ,
+  firstname VARCHAR(35) NULL ,
+  lastname VARCHAR(35) NULL ,
+  dateOfBirth VARCHAR(45) NULL ,
+  gender CHAR(1) NOT NULL,
+  FOREIGN KEY (gender) REFERENCES Gender_Ref(gender),
+  PRIMARY KEY (id)) ENGINE=InnoDB;
+
+INSERT INTO Account (email, password, username, firstname, lastname, dateOfBirth, gender) VALUES('roman@test.com', 'comeback', 'Roman.yu', 'Roman', 'YU', '1989-12-12', 'M');
 
 INSERT INTO animals (name) VALUES
     ('dog'),('cat'),('penguin'),

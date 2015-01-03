@@ -2,9 +2,9 @@ var http = require('http');
 var url = require('url');
 var mysql = require('mysql');
 
-var formidable = require('formidable');
+// var formidable = require('formidable');
 
-var qs = require('querystring');
+// var qs = require('querystring');
 
 var express = require('express');
 var bodyParser = require('body-parser');
@@ -26,22 +26,27 @@ app.get('/', function(req, res) {
 app.post('/', function(request, response) {
 
 	var email = request.body.user.email;
+    var password = request.body.user.password;
 	var username = request.body.user.username;
 	var firstname = request.body.user.firstname;
 	var lastname = request.body.user.lastname;
+    var dateOfBirth = request.body.user.dateOfBirth;
+    var gender = request.body.user.gender;
 
 	// console.log('email: ' + email);
 	// console.log('username: ' + username);
  //    console.log('firstname: ' + firstname);
  //    console.log('lastname: ' + lastname);
 
-    var post  = {email: email, username: username, firstname: firstname, lastname: lastname};
+    var post  = {email: email, password: password, username: username, 
+        firstname: firstname, lastname: lastname, dateOfBirth: dateOfBirth,
+        gender: gender};
 
 	var connection = mysql.createConnection({
         host: 'localhost',
-        user: 'tester',
-        password: 'tester',
-        database: 'test'
+        user: 'roman',
+        password: 'admin',
+        database: 'test_db'
     });
     connection.connect();
 
